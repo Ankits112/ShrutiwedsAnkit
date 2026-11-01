@@ -1,0 +1,1733 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>Shruti & Ankit — A Royal Wedding Celebration | 2 Feb 2027</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@400;500;600;700&family=GFS+Didot&family=Hind+Vadodara:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #fffaf2;
+      --paper-card: #fffdf9;
+      --saffron: #ff6b00;
+      --marigold: #f59e0b;
+      --terracotta: #c2410c;
+      --maroon: #7f1d1d;
+      --maroon-deep: #450a0a;
+      --gold-light: #fde68a;
+      --gold: #d97706;
+      --gold-metallic: #c59b27;
+      --ink: #3d2c1d;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+      background-color: #ffffff;
+    }
+    [x-cloak] { display: none !important; }
+
+    .display { font-family: 'Playfair Display', serif; }
+    .cormorant { font-family: 'Cormorant Garamond', serif; }
+    .didot { font-family: 'GFS Didot', serif; }
+    .hindi { font-family: 'Hind Vadodara', sans-serif; }
+
+    /* Luxury Gold Foil Text Gradient */
+    .gold-foil-text {
+      background: linear-gradient(135deg, #9a6f1a 0%, #d4af37 25%, #aa5c11 50%, #e6c665 75%, #9a530f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: shimmerText 6s linear infinite;
+    }
+    @keyframes shimmerText {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* Rotating Mandala Animations */
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes spinReverseSlow {
+      from { transform: rotate(360deg); }
+      to { transform: rotate(0deg); }
+    }
+    .spin-slow { animation: spinSlow 50s linear infinite; }
+    .spin-reverse-slow { animation: spinReverseSlow 65s linear infinite; }
+
+    /* Subtle Paper Noise Overlay */
+    .paper-grain {
+      background-image: radial-gradient(rgba(217, 119, 6, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* ==========================================
+       3D SAFFRON ORANGE ENVELOPE & MAROON SEAL
+       ========================================== */
+    .envelope-stage {
+      perspective: 1800px;
+      user-select: none;
+    }
+    .envelope-3d-wrapper {
+      width: min(92vw, 680px);
+      height: 400px;
+      position: relative;
+      margin: 0 auto;
+      transform-style: preserve-3d;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease;
+      cursor: pointer;
+      filter: drop-shadow(0 30px 45px rgba(154, 52, 18, 0.22)) drop-shadow(0 10px 18px rgba(127, 29, 29, 0.14));
+    }
+
+    /* Back Base & Royal Maroon-Gold Brocade Interior Liner */
+    .env-back {
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #5c0d14 0%, #3b060a 100%);
+      border: 2px solid #eab308;
+      overflow: hidden;
+      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.55);
+    }
+    .env-brocade-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.22;
+      background-image:
+        radial-gradient(circle at 50% 50%, #fbbf24 2px, transparent 2.5px),
+        radial-gradient(circle at 0% 0%, #fbbf24 2px, transparent 2.5px),
+        radial-gradient(circle at 100% 0%, #fbbf24 2px, transparent 2.5px),
+        radial-gradient(circle at 0% 100%, #fbbf24 2px, transparent 2.5px),
+        radial-gradient(circle at 100% 100%, #fbbf24 2px, transparent 2.5px);
+      background-size: 32px 32px;
+    }
+
+    /* Inner Ivory & Gold Wedding Card that rises out */
+    .env-letter-card {
+      position: absolute;
+      left: 5.5%;
+      right: 5.5%;
+      bottom: 5%;
+      height: 88%;
+      z-index: 2;
+      background: linear-gradient(180deg, #ffffff 0%, #fffaf0 100%);
+      border-radius: 10px;
+      border: 1px solid #e5c178;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(69, 10, 10, 0.28);
+      transition: transform 1.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 1.25s ease;
+      overflow: hidden;
+    }
+    .env-letter-card::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 2px double #d4af37;
+      border-radius: 6px;
+      pointer-events: none;
+    }
+    .env-letter-card::after {
+      content: "";
+      position: absolute;
+      inset: 13px;
+      border: 1px dashed rgba(217, 119, 6, 0.35);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    /* Envelope Flaps in Rich Saffron & Marigold Orange */
+    .env-flap-left {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      clip-path: polygon(0 0, 55% 50%, 0 100%);
+      background: linear-gradient(120deg, #ff7b14 0%, #f97316 55%, #ea580c 100%);
+      border-radius: 14px 0 0 14px;
+      pointer-events: none;
+    }
+    .env-flap-left::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(39deg, transparent 49.2%, #fde08d 49.6%, #d4af37 50%, transparent 50.4%);
+    }
+
+    .env-flap-right {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      clip-path: polygon(100% 0, 45% 50%, 100% 100%);
+      background: linear-gradient(-120deg, #fb851b 0%, #ea580c 60%, #c2410c 100%);
+      border-radius: 0 14px 14px 0;
+      pointer-events: none;
+    }
+    .env-flap-right::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(-39deg, transparent 49.2%, #fde08d 49.6%, #d4af37 50%, transparent 50.4%);
+    }
+
+    .env-flap-bottom {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      clip-path: polygon(0 100%, 50% 41%, 100% 100%);
+      background: linear-gradient(0deg, #c2410c 0%, #ea580c 48%, #f97316 92%, #fb923c 100%);
+      border-radius: 0 0 14px 14px;
+      pointer-events: none;
+      filter: drop-shadow(0 -6px 12px rgba(69, 10, 10, 0.25));
+    }
+    .env-flap-bottom::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(144.5deg, transparent 49.3%, #fde68a 49.7%, #ca8a04 50.1%, transparent 50.5%),
+        linear-gradient(-144.5deg, transparent 49.3%, #fde68a 49.7%, #ca8a04 50.1%, transparent 50.5%);
+    }
+
+    /* Top Opening Flap */
+    .env-flap-top {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 60%;
+      z-index: 6;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      background: linear-gradient(170deg, #ff8524 0%, #f97316 52%, #d9530f 96%);
+      transform-origin: top center;
+      transition: transform 1.05s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.35s;
+      border-radius: 14px 14px 0 0;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 14px rgba(69, 10, 10, 0.32));
+    }
+    .env-flap-top::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-top: 3px solid #fde08d;
+      background:
+        linear-gradient(35deg, transparent 49.1%, #fde68a 49.5%, #b45309 50.1%, transparent 50.5%),
+        linear-gradient(-35deg, transparent 49.1%, #fde68a 49.5%, #b45309 50.1%, transparent 50.5%);
+    }
+
+    /* Sculpted 3D Royal Maroon Red Wax Seal */
+    .wax-seal-btn {
+      position: absolute;
+      z-index: 10;
+      left: 50%;
+      top: 57%;
+      transform: translate(-50%, -50%);
+      width: 118px;
+      height: 118px;
+      border-radius: 52% 48% 51% 49% / 49% 52% 48% 51%;
+      background: radial-gradient(circle at 32% 28%, #b91c1c 0%, #881313 38%, #630b0b 72%, #3b0404 100%);
+      box-shadow:
+        inset 0 4px 8px rgba(254, 202, 202, 0.32),
+        inset 0 -6px 12px rgba(24, 2, 2, 0.85),
+        0 12px 24px rgba(69, 10, 10, 0.55),
+        0 0 0 4px rgba(127, 29, 29, 0.9),
+        0 0 0 6px rgba(251, 191, 36, 0.45);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease, box-shadow 0.35s ease;
+    }
+    .wax-seal-btn::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(253, 230, 138, 0.8);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+    }
+    .wax-seal-btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(125deg, transparent 30%, rgba(253, 230, 138, 0.35) 50%, transparent 70%);
+      background-size: 200% 200%;
+      background-position: 180% 180%;
+      transition: background-position 0.65s ease;
+      pointer-events: none;
+    }
+    .envelope-3d-wrapper:hover .wax-seal-btn {
+      transform: translate(-50%, -50%) scale(1.08);
+      box-shadow:
+        inset 0 4px 10px rgba(254, 202, 202, 0.4),
+        inset 0 -6px 12px rgba(24, 2, 2, 0.9),
+        0 16px 32px rgba(69, 10, 10, 0.65),
+        0 0 0 4px rgba(153, 27, 27, 0.95),
+        0 0 22px rgba(251, 191, 36, 0.7);
+    }
+    .envelope-3d-wrapper:hover .wax-seal-btn::after {
+      background-position: -40% -40%;
+    }
+
+    /* Open State Animations */
+    .envelope-3d-wrapper.is-open .env-flap-top {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+    .envelope-3d-wrapper.is-open .env-letter-card {
+      transform: translateY(-175px) scale(1.03);
+      transition-delay: 0.38s;
+      z-index: 5;
+      box-shadow: 0 24px 48px rgba(69, 10, 10, 0.35);
+    }
+    .envelope-3d-wrapper.is-open .wax-seal-btn {
+      transform: translate(-50%, -50%) scale(1.35);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+      .envelope-3d-wrapper { height: 295px; }
+      .wax-seal-btn { width: 92px; height: 92px; }
+      .envelope-3d-wrapper.is-open .env-letter-card {
+        transform: translateY(-120px) scale(1.02);
+      }
+    }
+
+    /* ==========================================
+       ROYAL TEMPLE CARD & ORNATE BORDERS
+       ========================================== */
+    .royal-temple-card {
+      position: relative;
+      background: linear-gradient(180deg, #fffdf9 0%, #fff9eb 100%);
+      border: 3px double #d4af37;
+      outline: 1px solid #f3d692;
+      outline-offset: 6px;
+      box-shadow: 0 20px 55px rgba(146, 64, 14, 0.12), inset 0 0 60px rgba(251, 191, 36, 0.08);
+    }
+
+    /* Animated Flame Flicker */
+    @keyframes flameFlicker {
+      0%, 100% { transform: scaleY(1) scaleX(1) rotate(-1deg); opacity: 0.95; }
+      25% { transform: scaleY(1.08) scaleX(0.96) rotate(1.5deg); opacity: 1; }
+      50% { transform: scaleY(0.95) scaleX(1.04) rotate(-0.5deg); opacity: 0.9; }
+      75% { transform: scaleY(1.05) scaleX(0.98) rotate(1deg); opacity: 1; }
+    }
+    .flame-anim {
+      transform-origin: 50% 90%;
+      animation: flameFlicker 2.2s ease-in-out infinite;
+    }
+
+    /* Lotus Bloom Pulse */
+    @keyframes lotusPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    .lotus-anim {
+      transform-origin: center bottom;
+      animation: lotusPulse 4s ease-in-out infinite;
+    }
+
+    /* Polaroid 3D Cards */
+    .luxury-polaroid {
+      background: #fffef9;
+      padding: 14px 14px 26px;
+      border: 1px solid #f1dfba;
+      box-shadow: 0 14px 34px rgba(104, 65, 32, 0.14);
+      transform: rotate(var(--tilt, 0deg));
+      transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+    }
+    .luxury-polaroid:hover {
+      transform: rotate(0deg) translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 45px rgba(154, 52, 18, 0.22);
+      z-index: 10;
+    }
+
+    /* Gold Divider Rule */
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #d97706, #fbbf24, #d97706, transparent);
+    }
+  </style>
+</head>
+
+<body x-data="weddingApp()" x-init="init()" class="selection:bg-[#ffedd5] selection:text-[#9a3412]">
+
+  <!-- =================================================================
+       MASTER SVG DEFINITIONS (EXACT ORANGE GANESHA, KALASH, HAVAN, LOTUS)
+       ================================================================= -->
+  <svg class="hidden" aria-hidden="true">
+    <!-- 1. Exact Silhouette Ganesha Emblem matching uploaded Ganesha logo.png -->
+    <symbol id="ganesha-logo-svg" viewBox="0 0 120 145">
+      <defs>
+        <linearGradient id="ganeshaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ff7b00" />
+          <stop offset="55%" stop-color="#ff5500" />
+          <stop offset="100%" stop-color="#d9460f" />
+        </linearGradient>
+      </defs>
+      <!-- Three-tiered Crown / Mukut -->
+      <path d="M60 4 C55 10 53 15 60 15 C67 15 65 10 60 4 Z" fill="url(#ganeshaGrad)"/>
+      <path d="M48 18 L72 18 L68 25 L52 25 Z" fill="url(#ganeshaGrad)"/>
+      <path d="M39 29 Q60 24 81 29 L76 36 Q60 32 44 36 Z" fill="url(#ganeshaGrad)"/>
+      <!-- Left Ear, Head, Right Ear & Curved Trunk -->
+      <path d="M43 40
+               C22 36, 8 43, 12 61
+               C15 73, 27 76, 37 68
+               C39 81, 48 93, 62 94
+               C73 95, 80 88, 79 79
+               C78 72, 71 70, 67 74
+               C65 77, 68 82, 62 82
+               C55 82, 51 72, 53 60
+               C55 48, 66 47, 72 57
+               C76 64, 77 70, 83 68
+               C96 65, 106 53, 102 41
+               C98 33, 81 36, 75 40
+               Q60 37 43 40 Z" fill="url(#ganeshaGrad)"/>
+      <!-- Left Upper Arm & Weapon/Lotus -->
+      <path d="M33 73 C18 72, 8 81, 12 92 C16 99, 28 96, 35 87 Z" fill="url(#ganeshaGrad)"/>
+      <!-- Left Lower Hand & Modak Bowl -->
+      <path d="M35 92 C21 95, 16 105, 25 111 C33 114, 42 106, 44 97 Z" fill="url(#ganeshaGrad)"/>
+      <!-- Right Upper Arm & Blessing Hand (Abhaya Mudra) -->
+      <path d="M86 72 C98 70, 106 79, 103 92 C100 100, 90 96, 84 86 Z" fill="url(#ganeshaGrad)"/>
+      <circle cx="96" cy="63" r="5.5" fill="url(#ganeshaGrad)"/>
+      <!-- Right Lower Hand -->
+      <path d="M82 93 C94 95, 102 103, 95 110 C88 114, 78 107, 76 98 Z" fill="url(#ganeshaGrad)"/>
+      <!-- Seated Folded Legs (Padmasana) & Center Drape -->
+      <ellipse cx="34" cy="122" rx="22" ry="11" fill="url(#ganeshaGrad)"/>
+      <ellipse cx="86" cy="122" rx="22" ry="11" fill="url(#ganeshaGrad)"/>
+      <path d="M52 99 L68 99 L63 139 L60 143 L57 139 Z" fill="url(#ganeshaGrad)"/>
+    </symbol>
+
+    <!-- 2. Sacred Lotus & Marigold Pushpa Motif -->
+    <symbol id="motif-lotus" viewBox="0 0 120 100">
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Back Petals -->
+        <path d="M60 18 C46 32 42 54 60 72 C78 54 74 32 60 18 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="2.2"/>
+        <path d="M60 72 C36 66 24 44 34 26 C46 34 52 50 60 72 Z" fill="#ffedd5" stroke="#ea580c" stroke-width="2.2"/>
+        <path d="M60 72 C84 66 96 44 86 26 C74 34 68 50 60 72 Z" fill="#ffedd5" stroke="#ea580c" stroke-width="2.2"/>
+        <path d="M60 72 C28 74 12 58 16 40 C32 44 45 58 60 72 Z" fill="#fff7ed" stroke="#d97706" stroke-width="2"/>
+        <path d="M60 72 C92 74 108 58 104 40 C88 44 75 58 60 72 Z" fill="#fff7ed" stroke="#d97706" stroke-width="2"/>
+        <!-- Base Leaves -->
+        <path d="M22 76 Q60 88 98 76" stroke="#b45309" stroke-width="2.5"/>
+        <circle cx="60" cy="11" r="3" fill="#f59e0b"/>
+      </g>
+    </symbol>
+
+    <!-- 3. Sacred Mangal Kalash Motif -->
+    <symbol id="motif-kalash" viewBox="0 0 120 130">
+      <!-- Kalash Base & Pot -->
+      <path d="M38 116 L82 116 L76 106 L44 106 Z" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+      <path d="M40 56 C22 68 24 98 44 106 L76 106 C96 98 98 68 80 56 Z" fill="#fbbf24" stroke="#92400e" stroke-width="2.2"/>
+      <!-- Neck of Kalash -->
+      <path d="M36 48 L84 48 L78 56 L42 56 Z" fill="#f59e0b" stroke="#92400e" stroke-width="2"/>
+      <!-- Mango Leaves (Aamrapatra) -->
+      <path d="M44 48 C26 42 18 28 28 22 C38 24 44 36 48 48 Z" fill="#15803d" stroke="#14532d" stroke-width="1.8"/>
+      <path d="M76 48 C94 42 102 28 92 22 C82 24 76 36 72 48 Z" fill="#15803d" stroke="#14532d" stroke-width="1.8"/>
+      <path d="M52 48 C42 34 38 20 46 14 C54 20 56 34 56 48 Z" fill="#16a34a" stroke="#14532d" stroke-width="1.8"/>
+      <path d="M68 48 C78 34 82 20 74 14 C66 20 64 34 64 48 Z" fill="#16a34a" stroke="#14532d" stroke-width="1.8"/>
+      <!-- Sacred Coconut on Top -->
+      <ellipse cx="60" cy="30" rx="14" ry="17" fill="#9a3412" stroke="#431407" stroke-width="2"/>
+      <!--Sacred Swastika on Pot -->
+      <path d="M60 72 L60 92 M50 82 L70 82 M60 72 L68 72 M70 82 L70 90 M60 92 L52 92 M50 82 L50 74" stroke="#991b1b" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <!-- Decorative Garland on Kalash -->
+      <path d="M31 74 Q60 84 89 74" stroke="#dc2626" stroke-width="2" stroke-dasharray="3 3" fill="none"/>
+    </symbol>
+
+    <!-- 4. Sacred Pavitra Havan Kund Motif -->
+    <symbol id="motif-havan" viewBox="0 0 120 130">
+      <!-- Stepped Brick Havan Kund Pedestal -->
+      <rect x="20" y="106" width="80" height="10" rx="2" fill="#9a3412" stroke="#431407" stroke-width="2"/>
+      <rect x="28" y="94" width="64" height="12" rx="2" fill="#c2410c" stroke="#431407" stroke-width="2"/>
+      <path d="M24 76 L96 76 L86 94 L34 94 Z" fill="#ea580c" stroke="#431407" stroke-width="2"/>
+      <!--Samidha Wood Logs -->
+      <line x1="38" y1="74" x2="82" y2="66" stroke="#78350f" stroke-width="5" stroke-linecap="round"/>
+      <line x1="82" y1="74" x2="38" y2="66" stroke="#5c280b" stroke-width="5" stroke-linecap="round"/>
+      <!-- Sacred Agni Flames -->
+      <g class="flame-anim">
+        <path d="M60 12 C38 35 34 56 46 72 C54 78 66 78 74 72 C86 56 82 35 60 12 Z" fill="#f97316"/>
+        <path d="M60 24 C46 42 44 58 52 71 C57 75 63 75 68 71 C76 58 74 42 60 24 Z" fill="#fbbf24"/>
+        <path d="M60 40 C53 50 52 62 60 70 C68 62 67 50 60 40 Z" fill="#fef08a"/>
+      </g>
+      <!-- Rising Sparks -->
+      <circle cx="44" cy="28" r="2" fill="#f59e0b"/>
+      <circle cx="78" cy="24" r="2.5" fill="#fbbf24"/>
+      <circle cx="60" cy="6" r="2" fill="#ea580c"/>
+    </symbol>
+  </svg>
+
+  <!-- =================================================================
+       INTERACTIVE PARTICLE CANVAS (MARIGOLD PETALS & GOLD SPARKLES)
+       ================================================================= -->
+  <canvas id="celebrationCanvas" class="fixed inset-0 pointer-events-none z-50"></canvas>
+
+  <!-- Top Golden Scroll Progress Bar (Visible when invitation is opened) -->
+  <div x-show="opened" x-cloak class="fixed top-0 left-0 right-0 h-1 bg-[#f5e6c8] z-50">
+    <div class="h-full bg-gradient-to-r from-[#ea580c] via-[#eab308] to-[#991b1b] transition-all duration-150" :style="`width: ${scrollPercent}%`"></div>
+  </div>
+
+  <!-- =================================================================
+       1. LANDING PAGE: WHITE BACKGROUND + 3D ORANGE ENVELOPE + MAROON SEAL
+       ================================================================= -->
+  <section
+    x-show="!opened"
+    x-transition:leave="transition ease-in-out duration-700"
+    x-transition:leave-start="opacity-100 scale-100"
+    x-transition:leave-end="opacity-0 scale-105"
+    class="min-h-screen w-full flex flex-col items-center justify-center px-4 py-8 sm:py-12 relative overflow-hidden bg-[#ffffff]"
+  >
+    <!-- Pure White Gallery Backdrop with Subtle Warm Radial Halo -->
+    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(circle at 50% 48%, rgba(255, 248, 231, 0.85) 0%, rgba(255, 255, 255, 1) 72%);"></div>
+
+    <!-- Outer Luxury Gold Double Frame on White Background -->
+    <div class="absolute inset-3 sm:inset-6 border-2 border-[#ebd5a7] rounded-2xl pointer-events-none"></div>
+    <div class="absolute inset-4 sm:inset-8 border border-dashed border-[#e5c37d] rounded-xl pointer-events-none"></div>
+
+    <!-- Rotating Corner Gold Mandalas -->
+    <svg class="absolute -top-16 -left-16 w-48 h-48 text-[#d97706]/20 spin-slow pointer-events-none" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+      <circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="1"/>
+      <path d="M50 5 L55 45 L95 50 L55 55 L50 95 L45 55 L5 50 L45 45 Z" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+    <svg class="absolute -bottom-16 -right-16 w-48 h-48 text-[#d97706]/20 spin-reverse-slow pointer-events-none" viewBox="0 0 100 100" fill="none">
+      <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="1" stroke-dasharray="2 2"/>
+      <circle cx="50" cy="50" r="35" stroke="currentColor" stroke-width="1"/>
+      <path d="M50 5 L55 45 L95 50 L55 55 L50 95 L45 55 L5 50 L45 45 Z" stroke="currentColor" stroke-width="0.8"/>
+    </svg>
+
+    <div class="relative z-10 w-full max-w-4xl text-center">
+      <!-- Sacred Ganesha Emblem with Golden Pulse Aura -->
+      <div class="relative mx-auto mb-2 w-16 h-16 flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full bg-[#ff6b00]/15 animate-ping" style="animation-duration: 3s;"></div>
+        <img src="Ganesha logo.png" alt="Lord Ganesha" class="w-14 h-14 object-contain relative z-10 drop-shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+        <svg class="w-14 h-14 hidden relative z-10 drop-shadow-sm"><use href="#ganesha-logo-svg"/></svg>
+      </div>
+
+      <p class="hindi text-xs sm:text-sm text-[#c2410c] font-semibold tracking-wider mb-1">|| श्री गणेशाय नमः ||</p>
+      <p class="text-[10px] sm:text-xs uppercase tracking-[0.32em] text-[#9a6b26] font-medium">The Tamhane & Singh Families Cordially Invite You</p>
+      <h1 class="display text-4xl sm:text-6xl font-bold gold-foil-text mt-1 mb-8 sm:mb-10 pb-1">
+        Shruti <span class="italic font-normal text-[#ea580c]">&amp;</span> Ankit
+      </h1>
+
+      <!-- =========================================================
+           INTERACTIVE 3D TILT SAFFRON-ORANGE ENVELOPE & MAROON SEAL
+           ========================================================= -->
+      <div
+        class="envelope-stage py-2"
+        @mousemove="handleEnvelopeTilt($event)"
+        @mouseleave="resetEnvelopeTilt()"
+      >
+        <div
+          class="envelope-3d-wrapper"
+          :class="tearing ? 'is-open' : ''"
+          :style="`transform: rotateX(${envRotateX}deg) rotateY(${envRotateY}deg)`"
+          @click="openInvitation($event)"
+          role="button"
+          tabindex="0"
+          @keydown.enter="openInvitation($event)"
+          @keydown.space.prevent="openInvitation($event)"
+          aria-label="Tap the maroon wax seal to open Shruti and Ankit's wedding invitation"
+        >
+          <!-- Envelope Back with Royal Maroon & Gold Brocade Interior -->
+          <div class="env-back">
+            <div class="env-brocade-pattern"></div>
+          </div>
+
+          <!-- Inner Wedding Letter Card (Slides upward on open) -->
+          <div class="env-letter-card">
+            <!-- Ganesha Inside Card -->
+            <div class="w-9 h-9 mx-auto mb-0.5 flex items-center justify-center">
+              <img src="Ganesha logo.png" alt="Ganesha" class="w-9 h-9 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <svg class="w-9 h-9 hidden"><use href="#ganesha-logo-svg"/></svg>
+            </div>
+            <p class="hindi text-[11px] text-[#c2410c] font-semibold">|| श्री गणेशाय नमः ||</p>
+            <p class="text-[9px] tracking-[0.28em] uppercase text-[#a16207] mt-0.5">Auspicious Wedding Invitation</p>
+            <h2 class="display text-2xl sm:text-4xl text-[#9a3412] font-semibold mt-1">
+              Shruti <span class="italic text-[#d97706] font-normal">&amp;</span> Ankit
+            </h2>
+
+            <!-- Custom Handcrafted SVG Motifs on Landing Card: Flowers, Kalash, Havan -->
+            <div class="flex items-center justify-center gap-4 sm:gap-6 my-2 py-1 px-4 rounded-full bg-[#fff7ed] border border-[#fed7aa]">
+              <div class="flex flex-col items-center">
+                <svg class="w-7 h-7 sm:w-8 sm:h-8"><use href="#motif-lotus"/></svg>
+                <span class="text-[8px] uppercase tracking-widest text-[#9a3412] font-semibold">Pushpa</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <svg class="w-7 h-7 sm:w-8 sm:h-8"><use href="#motif-kalash"/></svg>
+                <span class="text-[8px] uppercase tracking-widest text-[#9a3412] font-semibold">Kalash</span>
+              </div>
+              <div class="flex flex-col items-center">
+                <svg class="w-7 h-7 sm:w-8 sm:h-8"><use href="#motif-havan"/></svg>
+                <span class="text-[8px] uppercase tracking-widest text-[#9a3412] font-semibold">Havan</span>
+              </div>
+            </div>
+
+            <p class="text-[10px] sm:text-xs tracking-[0.24em] text-[#78350f] font-semibold uppercase">
+              Tuesday · 02 February 2027 · Thane
+            </p>
+          </div>
+
+          <!-- 4 Saffron-Orange & Gold-Foil Envelope Flaps -->
+          <div class="env-flap-left"></div>
+          <div class="env-flap-right"></div>
+          <div class="env-flap-bottom"></div>
+          <div class="env-flap-top"></div>
+
+          <!-- Sculpted 3D Royal Maroon Red Wax Seal -->
+          <div class="wax-seal-btn" title="Click to break seal & open invitation">
+            <div class="w-8 h-8 flex items-center justify-center mb-0.5">
+              <img src="Ganesha logo.png" alt="" class="w-7 h-7 object-contain brightness-200 contrast-125" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+              <svg class="w-7 h-7 hidden brightness-150"><use href="#ganesha-logo-svg"/></svg>
+            </div>
+            <span class="display text-lg sm:text-xl font-bold tracking-widest text-[#fde68a] leading-none">S &amp; A</span>
+            <span class="text-[7px] uppercase tracking-[0.25em] text-[#fca5a5] mt-1">02·02·27</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Call-To-Action Pill below Envelope -->
+      <div class="mt-9 flex flex-col items-center gap-3">
+        <button
+          type="button"
+          @click="openInvitation($event)"
+          :disabled="tearing"
+          class="group relative inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-[#7f1d1d] via-[#991b1b] to-[#7f1d1d] px-8 py-3.5 text-xs sm:text-sm tracking-[0.22em] uppercase text-[#fef3c7] font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 border border-[#f59e0b]/60 disabled:opacity-60"
+        >
+          <span class="w-2.5 h-2.5 rounded-full bg-[#fbbf24] animate-ping" x-show="!tearing"></span>
+          <span x-show="!tearing">Tap Maroon Wax Seal to Open Invitation</span>
+          <span x-show="tearing">Breaking Royal Seal &amp; Unfolding…</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================================
+       2. FULL SCROLLABLE LUXURY INVITATION WEBSITE (AFTER OPENING)
+       ================================================================= -->
+  <main x-show="opened" x-cloak class="relative bg-[#fffaf2] paper-grain min-h-screen">
+
+    <!-- Sticky Glassmorphic Luxury Navbar -->
+    <header class="sticky top-0 z-40 bg-[#fffdf9]/90 backdrop-blur-md border-b border-[#ecd4a4] shadow-sm">
+      <nav class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+        <a href="#hero" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 flex items-center justify-center">
+            <img src="Ganesha logo.png" alt="Ganesha" class="w-7 h-7 object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+            <svg class="w-7 h-7 hidden"><use href="#ganesha-logo-svg"/></svg>
+          </div>
+          <span class="display text-xl sm:text-2xl font-bold text-[#9a3412]">
+            Shruti <span class="text-[#d97706] italic font-normal">&amp;</span> Ankit
+          </span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-7 text-xs tracking-[0.2em] text-[#6d4c2d] uppercase font-medium">
+          <a href="#motifs" class="hover:text-[#ea580c] transition">Sacred Symbols</a>
+          <a href="#invite" class="hover:text-[#ea580c] transition">Invitation</a>
+          <a href="#celebrations" class="hover:text-[#ea580c] transition">Celebrations</a>
+          <a href="#gallery" class="hover:text-[#ea580c] transition">Memories</a>
+          <a href="#rsvp" class="hover:text-[#ea580c] transition">Blessings &amp; RSVP</a>
+        </div>
+
+        <button
+          @click="burstPetals(38)"
+          class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#f97316] to-[#d97706] text-white px-4 py-2 text-xs font-medium tracking-wider uppercase shadow hover:shadow-md hover:scale-105 transition"
+          title="Shower Marigold Petals & Blessings"
+        >
+          <span>🌸</span>
+          <span class="hidden sm:inline">Shower Petals</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- ===============================================================
+         HERO SECTION: ROYAL JHAROKHA ARCH & SACRED BLESSING
+         =============================================================== -->
+    <section id="hero" class="relative px-4 pt-14 pb-20 sm:pt-20 sm:pb-28 overflow-hidden text-center">
+      <!-- Rotating Ornamental Chakra Backdrop -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+        <svg class="w-[550px] h-[550px] sm:w-[720px] sm:h-[720px] text-[#d97706] spin-slow" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="92" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="100" cy="100" r="76" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="100" cy="100" r="58" stroke="currentColor" stroke-width="1"/>
+          <g stroke="currentColor" stroke-width="0.8">
+            <path d="M100 8 L108 92 L192 100 L108 108 L100 192 L92 108 L8 100 L92 92 Z"/>
+            <path d="M35 35 L95 90 L165 35 L110 95 L165 165 L105 110 L35 165 L90 105 Z"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Royal Arch Container -->
+      <div class="relative z-10 max-w-4xl mx-auto bg-[#fffdf9]/85 backdrop-blur-sm border-2 border-[#e5c178] rounded-t-[180px] sm:rounded-t-[260px] rounded-b-3xl px-6 sm:px-14 pt-14 pb-14 shadow-xl">
+        <!-- Inner Gold Arch Line -->
+        <div class="absolute inset-3 border border-dashed border-[#d97706]/50 rounded-t-[170px] sm:rounded-t-[250px] rounded-b-2xl pointer-events-none"></div>
+
+        <!-- Ganesha Logo at Arch Crown -->
+        <div class="mx-auto mb-3 w-16 h-16 flex items-center justify-center">
+          <img src="Ganesha logo.png" alt="Ganesha Logo" class="w-16 h-16 object-contain drop-shadow" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <svg class="w-16 h-16 hidden drop-shadow"><use href="#ganesha-logo-svg"/></svg>
+        </div>
+
+        <div class="hindi text-lg sm:text-xl text-[#c2410c] font-semibold tracking-wide mb-2">
+          || श्री गणेशाय नमः ||
+        </div>
+        <p class="hindi text-xs sm:text-sm text-[#9a530f] mb-5">
+          वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ । निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
+        </p>
+
+        <p class="text-[11px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">
+          A Royal Celebration of Love, Family &amp; Forever
+        </p>
+
+        <h1 class="display text-5xl sm:text-8xl font-bold gold-foil-text mt-4 leading-tight pb-2">
+          Shruti <span class="italic font-normal text-[#ea580c]">&amp;</span> Ankit
+        </h1>
+
+        <p class="cormorant italic text-2xl sm:text-3xl text-[#6d4c2d] mt-3">
+          “Two souls woven together by destiny, blessed by family &amp; sacred fire.”
+        </p>
+
+        <div class="flex items-center justify-center gap-4 my-6">
+          <span class="h-px w-16 sm:w-28 bg-gradient-to-r from-transparent to-[#d97706]"></span>
+          <span class="text-[#ea580c] text-xl">✿ ❧ ✿</span>
+          <span class="h-px w-16 sm:w-28 bg-gradient-to-l from-transparent to-[#d97706]"></span>
+        </div>
+
+        <div class="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 bg-[#fff7ed] border border-[#fed7aa] px-6 py-3 rounded-full text-xs sm:text-sm tracking-[0.2em] uppercase text-[#9a3412] font-semibold">
+          <span>Tuesday, 02 February 2027</span>
+          <span class="text-[#d97706]">•</span>
+          <span>Shubh Mahurat 5:48 PM</span>
+          <span class="text-[#d97706]">•</span>
+          <span>Thane, Maharashtra</span>
+        </div>
+
+        <div class="mt-9 flex flex-wrap items-center justify-center gap-4">
+          <a href="#invite" class="inline-flex items-center gap-2 rounded-full bg-[#c2410c] hover:bg-[#9a3412] text-white px-8 py-3.5 text-xs sm:text-sm tracking-[0.2em] uppercase font-semibold shadow-lg transition transform hover:-translate-y-0.5">
+            <span>View Formal Invitation</span>
+            <span>↓</span>
+          </a>
+          <button
+            type="button"
+            @click="burstPetals(45)"
+            class="inline-flex items-center gap-2 rounded-full border-2 border-[#d97706] bg-[#fffdf9] hover:bg-[#fff4db] text-[#9a3412] px-7 py-3.5 text-xs sm:text-sm tracking-[0.2em] uppercase font-semibold transition"
+          >
+            <span>✨ Shower अक्षत &amp; पुष्प</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         AUSPICIOUS WEDDING MOTIFS SECTION (FLOWERS, KALASH & HAVAN)
+         =============================================================== -->
+    <section id="motifs" class="px-4 py-16 sm:py-20 bg-gradient-to-b from-[#fff5e0] to-[#fffaf2] border-y border-[#efd9aa]">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">Sacred Vedic Traditions</p>
+        <h2 class="display text-3xl sm:text-5xl text-[#9a3412] mt-2">Elements of Our Sacred Union</h2>
+        <p class="cormorant italic text-xl text-[#785536] mt-2 max-w-xl mx-auto">
+          Tap or hover over each sacred emblem to witness the blessings that sanctify our marriage.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-6 sm:gap-8 mt-10 items-stretch">
+          <!-- 1. Pushpa (Sacred Flowers) -->
+          <div
+            @click="activeMotif = activeMotif === 'lotus' ? null : 'lotus'; burstPetals(20)"
+            class="group cursor-pointer bg-[#fffdf9] border-2 border-[#ebd5a7] hover:border-[#ea580c] rounded-2xl p-8 flex flex-col items-center text-center h-full transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1.5 relative overflow-hidden"
+          >
+            <div class="w-24 h-24 shrink-0 mx-auto mb-5 rounded-full bg-[#fff7ed] border border-[#fed7aa] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-16 h-16 lotus-anim"><use href="#motif-lotus"/></svg>
+            </div>
+            <p class="hindi text-sm text-[#c2410c] font-semibold mb-2">|| मंगल पुष्प ||</p>
+            <h3 class="display text-2xl text-[#9a3412] min-h-[3.75rem] flex items-center justify-center mb-3 leading-snug">Sacred Lotus &amp; Marigold</h3>
+            <p class="text-sm text-[#6d4c2d] leading-relaxed flex-1">
+              Symbolizing purity, joy, and auspicious new beginnings as garlands of marigold and lotus unite two families in celebration.
+            </p>
+            <span class="inline-block mt-6 pt-2 text-[10px] tracking-[0.22em] uppercase text-[#d97706] font-semibold group-hover:underline">
+              Click to shower petals 🌸
+            </span>
+          </div>
+
+          <!-- 2. Mangal Kalash -->
+          <div
+            @click="activeMotif = activeMotif === 'kalash' ? null : 'kalash'; burstPetals(20)"
+            class="group cursor-pointer bg-[#fffdf9] border-2 border-[#ebd5a7] hover:border-[#ea580c] rounded-2xl p-8 flex flex-col items-center text-center h-full transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1.5 relative overflow-hidden"
+          >
+            <div class="w-24 h-24 shrink-0 mx-auto mb-5 rounded-full bg-[#fff7ed] border border-[#fed7aa] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-16 h-16"><use href="#motif-kalash"/></svg>
+            </div>
+            <p class="hindi text-sm text-[#c2410c] font-semibold mb-2">|| मंगल कलश ||</p>
+            <h3 class="display text-2xl text-[#9a3412] min-h-[3.75rem] flex items-center justify-center mb-3 leading-snug">The Auspicious Kalash</h3>
+            <p class="text-sm text-[#6d4c2d] leading-relaxed flex-1">
+              Crowned with mango leaves and a sacred coconut, the Mangal Kalash invokes divine wisdom, abundance, and eternal harmony.
+            </p>
+            <span class="inline-block mt-6 pt-2 text-[10px] tracking-[0.22em] uppercase text-[#d97706] font-semibold group-hover:underline">
+              Click for Kalash blessings 🏺
+            </span>
+          </div>
+
+          <!-- 3. Pavitra Havan Kund -->
+          <div
+            @click="activeMotif = activeMotif === 'havan' ? null : 'havan'; burstPetals(20)"
+            class="group cursor-pointer bg-[#fffdf9] border-2 border-[#ebd5a7] hover:border-[#ea580c] rounded-2xl p-8 flex flex-col items-center text-center h-full transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1.5 relative overflow-hidden"
+          >
+            <div class="w-24 h-24 shrink-0 mx-auto mb-5 rounded-full bg-[#fff7ed] border border-[#fed7aa] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <svg class="w-16 h-16"><use href="#motif-havan"/></svg>
+            </div>
+            <p class="hindi text-sm text-[#c2410c] font-semibold mb-2">|| पवित्र हवन कुंड ||</p>
+            <h3 class="display text-2xl text-[#9a3412] min-h-[3.75rem] flex items-center justify-center mb-3 leading-snug">Sacred Havan &amp; Saptapadi</h3>
+            <p class="text-sm text-[#6d4c2d] leading-relaxed flex-1">
+              With Agni (sacred fire) as eternal witness, Shruti &amp; Ankit take their सात फेरे (Seven Sacred Vows) of lifelong devotion.
+            </p>
+            <span class="inline-block mt-6 pt-2 text-[10px] tracking-[0.22em] uppercase text-[#d97706] font-semibold group-hover:underline">
+              Click to invoke Agni blessings 🔥
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         THE FORMAL ROYAL INVITATION CARD (#invite)
+         =============================================================== -->
+    <section id="invite" class="px-4 py-16 sm:py-24">
+      <div class="max-w-3xl mx-auto royal-temple-card rounded-2xl px-6 sm:px-14 py-14 sm:py-16 text-center relative">
+        <!-- Ornate Corner Filigree -->
+        <span class="absolute top-3 left-4 text-2xl text-[#d97706]">❧</span>
+        <span class="absolute top-3 right-4 text-2xl text-[#d97706] transform scale-x-[-1]">❧</span>
+        <span class="absolute bottom-3 left-4 text-2xl text-[#d97706] transform scale-y-[-1]">❧</span>
+        <span class="absolute bottom-3 right-4 text-2xl text-[#d97706] transform scale-[-1]">❧</span>
+
+        <!-- Ganesha Logo Inside Formal Card -->
+        <div class="mx-auto mb-3 w-14 h-14 flex items-center justify-center">
+          <img src="Ganesha logo.png" alt="Ganesha Logo" class="w-14 h-14 object-contain drop-shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <svg class="w-14 h-14 hidden drop-shadow-sm"><use href="#ganesha-logo-svg"/></svg>
+        </div>
+
+        <p class="hindi text-lg sm:text-xl text-[#c2410c] font-semibold mb-6">|| श्री गणेशाय नमः ||</p>
+
+        <p class="cormorant text-2xl sm:text-3xl leading-relaxed text-[#5c4028] font-medium">
+          Mrs. Sonali Tamhane &amp; Mr. Prakash Tamhane<br>
+          <span class="text-xl sm:text-2xl italic text-[#7c5836]">cordially invite you to the wedding of their daughter</span>
+        </p>
+
+        <h2 class="didot text-6xl sm:text-7xl text-[#c2410c] mt-6 tracking-wide">Shruti</h2>
+        <div class="flex items-center justify-center gap-4 my-3">
+          <span class="h-px w-12 bg-[#e5c178]"></span>
+          <span class="display italic text-2xl text-[#d97706]">with</span>
+          <span class="h-px w-12 bg-[#e5c178]"></span>
+        </div>
+        <h2 class="didot text-6xl sm:text-7xl text-[#c2410c] tracking-wide">Ankit</h2>
+
+        <p class="cormorant text-2xl sm:text-3xl leading-relaxed text-[#5c4028] font-medium mt-6">
+          <span class="text-xl sm:text-2xl italic text-[#7c5836]">son of</span><br>
+          Mrs. Poonam Singh &amp; Mr. Rajkishore Singh.
+        </p>
+
+        <!-- Sacred Motifs Divider -->
+        <div class="flex items-center justify-center gap-6 my-8">
+          <svg class="w-8 h-8"><use href="#motif-lotus"/></svg>
+          <svg class="w-9 h-9"><use href="#motif-kalash"/></svg>
+          <svg class="w-9 h-9"><use href="#motif-havan"/></svg>
+          <svg class="w-8 h-8"><use href="#motif-lotus"/></svg>
+        </div>
+
+        <div class="gold-rule my-7"></div>
+
+        <!-- Date Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div class="bg-[#fff4df] border border-[#edd298] rounded-xl px-3 py-4">
+            <p class="text-[10px] tracking-[0.25em] uppercase text-[#a16207]">Day</p>
+            <p class="display text-lg sm:text-xl text-[#7c2d12] font-semibold mt-1">Tuesday</p>
+          </div>
+          <div class="bg-[#fff4df] border border-[#edd298] rounded-xl px-3 py-4">
+            <p class="text-[10px] tracking-[0.25em] uppercase text-[#a16207]">Date</p>
+            <p class="display text-2xl sm:text-3xl text-[#7c2d12] font-bold mt-0.5">02</p>
+          </div>
+          <div class="bg-[#fff4df] border border-[#edd298] rounded-xl px-3 py-4">
+            <p class="text-[10px] tracking-[0.25em] uppercase text-[#a16207]">Month</p>
+            <p class="display text-lg sm:text-xl text-[#7c2d12] font-semibold mt-1">February</p>
+          </div>
+          <div class="bg-[#fff4df] border border-[#edd298] rounded-xl px-3 py-4">
+            <p class="text-[10px] tracking-[0.25em] uppercase text-[#a16207]">Year</p>
+            <p class="display text-lg sm:text-xl text-[#7c2d12] font-semibold mt-1">2027</p>
+          </div>
+        </div>
+
+        <!-- Shubh Mahurat & Venue -->
+        <div class="mt-9">
+          <p class="text-[11px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">Shubh Mahurat</p>
+          <p class="display text-5xl sm:text-6xl text-[#c2410c] font-bold mt-2">5:48 PM</p>
+          <p class="display text-2xl sm:text-3xl text-[#5c3418] mt-6 font-semibold">Madhuram Banquet Hall</p>
+          <p class="text-sm sm:text-base leading-relaxed text-[#7c5836] mt-1.5">
+            Kasarvadavali, Thane West, Thane, Maharashtra 400615.
+          </p>
+        </div>
+
+        <div class="text-[#d97706] tracking-[0.5em] text-xl my-8">✿ ❧ ✿</div>
+        <p class="display italic text-2xl sm:text-3xl text-[#9a3412]">No Gifts, Only Blessings</p>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         ROYAL COUNTDOWN & SAVE TO CALENDAR
+         =============================================================== -->
+    <section class="px-4 py-16 bg-gradient-to-r from-[#7f1d1d] via-[#5c0f14] to-[#7f1d1d] text-[#fef3c7] text-center relative overflow-hidden">
+      <div class="env-brocade-pattern"></div>
+      <div class="relative z-10 max-w-4xl mx-auto">
+        <p class="text-[10px] tracking-[0.32em] uppercase text-[#fcd34d]">Counting Down to Our Forever</p>
+        <h2 class="display text-3xl sm:text-5xl text-[#fffbeb] mt-2 mb-9">The Auspicious Moment Approaches</h2>
+
+        <div class="grid grid-cols-4 gap-2.5 sm:gap-5 max-w-2xl mx-auto">
+          <template x-for="u in countdown" :key="u.label">
+            <div class="bg-[#450a0a]/80 backdrop-blur-md border border-[#f59e0b]/50 rounded-2xl py-5 sm:py-7 px-2 shadow-lg">
+              <div class="display text-3xl sm:text-6xl font-bold text-[#fde68a] tabular-nums" x-text="String(u.value).padStart(2,'0')"></div>
+              <p class="text-[9px] sm:text-[11px] tracking-[0.25em] uppercase text-[#fca5a5] mt-2" x-text="u.label"></p>
+            </div>
+          </template>
+        </div>
+
+        <p class="text-xs sm:text-sm text-[#fde68a]/90 mt-6 tracking-widest uppercase">
+          Tuesday, 2 February 2027 · 5:48 PM IST
+        </p>
+
+        <!-- Calendar Action Buttons -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            target="_blank"
+            rel="noopener"
+            href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Shruti+%26+Ankit+Wedding+Celebration&dates=20270202T121800Z/20270202T173000Z&details=Wedding+of+Shruti+Tamhane+and+Ankit+Singh.+Shubh+Mahurat+at+5:48+PM+IST.&location=Madhuram+Banquet+Hall,+Kasarvadavali,+Thane+West,+Maharashtra+400615"
+            class="inline-flex items-center gap-2 rounded-full bg-[#f59e0b] hover:bg-[#d97706] text-[#3b0404] font-semibold px-6 py-3 text-xs tracking-[0.18em] uppercase transition shadow-md"
+          >
+            <span>📅 Save to Google Calendar</span>
+          </a>
+          <button
+            type="button"
+            @click="downloadICS()"
+            class="inline-flex items-center gap-2 rounded-full border border-[#fde68a] hover:bg-[#fde68a]/15 text-[#fef3c7] font-semibold px-6 py-3 text-xs tracking-[0.18em] uppercase transition"
+          >
+            <span>⬇ Download .ICS Calendar Invite</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         THE WEDDING CELEBRATIONS & ITINERARY (#celebrations)
+         =============================================================== -->
+    <section id="celebrations" class="px-4 py-16 sm:py-24">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">Mark Your Calendars</p>
+        <h2 class="display text-4xl sm:text-5xl text-[#9a3412] mt-2 mb-12">The Wedding Celebrations</h2>
+
+        <div class="max-w-xl mx-auto text-left items-stretch">
+          <!-- Event: Wedding & Reception -->
+          <article class="bg-[#fffdf9] border-2 border-[#ebd5a7] rounded-3xl p-7 sm:p-10 shadow-lg hover:shadow-xl transition relative overflow-hidden flex flex-col h-full">
+            <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#fecaca]/40 to-transparent rounded-bl-full pointer-events-none"></div>
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-[#fee2e2] border border-[#b91c1c] text-2xl">❀</span>
+                <span class="text-[10px] tracking-[0.2em] uppercase bg-[#7f1d1d] text-[#fef3c7] px-3.5 py-1.5 rounded-full font-semibold">
+                  Main Ceremony
+                </span>
+              </div>
+
+              <p class="text-xs tracking-[0.24em] uppercase text-[#a16207] font-semibold mt-6">Tuesday · 2 February 2027</p>
+              <h3 class="display text-3xl sm:text-4xl text-[#991b1b] mt-1 font-semibold">Wedding &amp; Reception</h3>
+              <p class="text-sm font-medium text-[#785536] mt-1">Shubh Mahurat · 5:48 PM</p>
+            </div>
+
+            <div class="mt-auto pt-4 flex flex-col">
+              <div class="self-start inline-flex items-center gap-2 text-xs text-[#7f1d1d] bg-[#fef2f2] border border-[#fecaca] px-3 py-1.5 rounded-lg">
+                <span class="w-2.5 h-2.5 rounded-full bg-[#991b1b]"></span>
+                <span><strong>Attire:</strong> Traditional Royal Indian Festive</span>
+              </div>
+
+              <div class="gold-rule my-6"></div>
+
+              <div class="min-h-[4.75rem]">
+                <p class="display text-xl text-[#4a2c11] font-semibold">Madhuram Banquet Hall</p>
+                <p class="text-sm leading-relaxed text-[#785536] mt-1">
+                  Kasarvadavali, Thane West, Thane, Maharashtra 400615
+                </p>
+              </div>
+
+              <div class="mt-6 flex flex-wrap items-center gap-3">
+                <a
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.google.com/maps/search/?api=1&query=Madhuram+Banquet+Hall+Kasarvadavali+Thane+West+Thane+Maharashtra+400615"
+                  class="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#991b1b] hover:bg-[#7f1d1d] text-white px-5 py-2.5 text-xs tracking-wider uppercase font-semibold transition"
+                >
+                  <span>📍 Open Google Maps ↗</span>
+                </a>
+                <button
+                  type="button"
+                  @click="copyText('Madhuram Banquet Hall, Kasarvadavali, Thane West, Thane, Maharashtra 400615', 'wedding')"
+                  class="inline-flex items-center justify-center gap-1.5 rounded-full border border-[#991b1b] text-[#7f1d1d] hover:bg-[#fef2f2] px-4 py-2.5 text-xs tracking-wider uppercase font-semibold transition"
+                >
+                  <span x-text="copiedKey === 'wedding' ? '✓ Address Copied' : 'Copy Address'"></span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         POLAROID GALLERY WITH LIGHTBOX MODAL (#gallery)
+         =============================================================== -->
+    <section id="gallery" class="px-4 py-16 sm:py-24 bg-[#fff3d6] border-y border-[#ecd4a4]">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">Snapshots of Our Story</p>
+        <h2 class="display text-4xl sm:text-5xl text-[#9a3412] mt-2 mb-3">Little Moments, Big Memories</h2>
+        <p class="text-xs text-[#806240] mb-10">Click any photograph to view in full-screen gallery mode</p>
+
+        <div class="grid sm:grid-cols-3 gap-8 sm:gap-10 max-w-4xl mx-auto">
+          <template x-for="(item, idx) in gallery" :key="idx">
+            <figure
+              class="luxury-polaroid cursor-pointer rounded-lg"
+              :style="`--tilt: ${item.tilt}`"
+              @click="activePhoto = item"
+            >
+              <div class="w-full aspect-[4/5] overflow-hidden bg-[#fff7ed] relative">
+                <img
+                  :src="item.src"
+                  :alt="item.caption"
+                  class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  @error="$event.target.src = item.fallback"
+                />
+              </div>
+              <figcaption class="display text-xl text-[#5c3418] mt-4 font-medium" x-text="item.caption"></figcaption>
+              <p class="text-[11px] text-[#9a6b26] mt-0.5" x-text="item.subtitle"></p>
+            </figure>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div
+      x-show="activePhoto"
+      x-cloak
+      x-transition.opacity
+      @click.self="activePhoto = null"
+      @keydown.escape.window="activePhoto = null"
+      class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+    >
+      <div class="relative bg-[#fffdf9] p-4 sm:p-6 rounded-2xl max-w-lg w-full text-center shadow-2xl border-2 border-[#d4af37]">
+        <button
+          @click="activePhoto = null"
+          class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-[#7f1d1d] text-white font-bold shadow-lg flex items-center justify-center hover:bg-[#991b1b]"
+          aria-label="Close photo preview"
+        >✕</button>
+        <template x-if="activePhoto">
+          <div>
+            <img
+              :src="activePhoto.src"
+              :alt="activePhoto.caption"
+              class="w-full max-h-[65vh] object-cover rounded-lg"
+              @error="$event.target.src = activePhoto.fallback"
+            />
+            <h4 class="display text-2xl text-[#9a3412] mt-4" x-text="activePhoto.caption"></h4>
+            <p class="text-xs text-[#785536] mt-1" x-text="activePhoto.subtitle"></p>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- ===============================================================
+         INTERACTIVE "LIGHT A DIYA" + PRIVATE RSVP & BLESSINGS (#rsvp)
+         =============================================================== -->
+    <section id="rsvp" class="px-4 py-16 sm:py-24">
+      <div class="max-w-5xl mx-auto">
+
+        <!-- Interactive Light a Diya Blessing Bar -->
+        <div class="mb-16 bg-gradient-to-r from-[#fff7ed] via-[#ffedd5] to-[#fff7ed] border-2 border-[#f59e0b]/60 rounded-3xl p-6 sm:p-9 text-center shadow-md relative overflow-hidden">
+          <div class="w-16 h-16 mx-auto mb-2 flex items-center justify-center">
+            <!-- Animated Brass Diya SVG -->
+            <svg viewBox="0 0 100 100" class="w-16 h-16">
+              <g class="flame-anim" x-show="diyaLit">
+                <path d="M50 12 C38 28 38 44 50 52 C62 44 62 28 50 12 Z" fill="#f97316"/>
+                <path d="M50 22 C43 32 43 44 50 50 C57 44 57 32 50 22 Z" fill="#facc15"/>
+              </g>
+              <path d="M18 56 Q50 64 82 56 C76 80 64 86 50 86 C36 86 24 80 18 56 Z" fill="#d97706" stroke="#78350f" stroke-width="2.5"/>
+              <ellipse cx="50" cy="56" rx="32" ry="6" fill="#fbbf24" stroke="#78350f" stroke-width="2"/>
+            </svg>
+          </div>
+          <p class="text-[10px] tracking-[0.28em] uppercase text-[#9a3412] font-semibold">Interactive Aashirwad</p>
+          <h3 class="display text-2xl sm:text-3xl text-[#7c2d12] mt-1">Light an Auspicious Diya for Shruti &amp; Ankit</h3>
+          <p class="text-xs sm:text-sm text-[#785536] mt-1">
+            <strong class="text-[#c2410c] text-base tabular-nums" x-text="diyaCount"></strong> sacred lamps lit by family &amp; friends worldwide
+          </p>
+          <button
+            type="button"
+            @click="lightDiya()"
+            class="mt-4 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#ea580c] to-[#d97706] text-white px-7 py-2.5 text-xs tracking-[0.2em] uppercase font-semibold shadow hover:shadow-lg hover:scale-105 transition"
+          >
+            <span>🪔</span>
+            <span x-text="userLitDiya ? 'Light Another Blessing Diya ✨' : 'Click to Light a Diya'"></span>
+          </button>
+        </div>
+
+        <!-- RSVP Form & Intro -->
+        <div class="grid md:grid-cols-2 gap-10 items-start">
+          <div class="md:pt-4">
+            <p class="text-[10px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">Your Presence is Our Present</p>
+            <h2 class="display text-4xl sm:text-5xl text-[#9a3412] mt-2">RSVP &amp; Blessings</h2>
+            <p class="cormorant italic text-2xl text-[#6d4c2d] leading-relaxed mt-4">
+              We cannot wait to celebrate these auspicious moments with you. Kindly let us know if you will attend, and leave a warm blessing for our new beginning.
+            </p>
+            <div class="flex items-center gap-4 mt-7">
+              <svg class="w-10 h-10"><use href="#motif-kalash"/></svg>
+              <div>
+                <p class="display text-lg text-[#9a3412] font-semibold">With Love &amp; Gratitude,</p>
+                <p class="text-xs text-[#785536] tracking-wider uppercase">Shruti, Ankit &amp; Families</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Private RSVP Card Form -->
+          <div class="bg-[#fffdf9] border-2 border-[#ebd5a7] rounded-3xl p-6 sm:p-8 shadow-lg">
+            <form @submit.prevent="submitWish()" class="space-y-4">
+              <div class="grid sm:grid-cols-3 gap-3.5">
+                <div class="sm:col-span-2">
+                  <label for="guest" class="block text-xs uppercase tracking-wider text-[#6d4c2d] font-semibold mb-1.5">Your Good Name *</label>
+                  <input
+                    id="guest"
+                    x-model.trim="form.name"
+                    required
+                    maxlength="70"
+                    placeholder="e.g., Rohan & Priya Deshmukh"
+                    class="w-full rounded-xl border border-[#e5c178] bg-[#fffef9] px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#ea580c]"
+                  >
+                </div>
+                <div>
+                  <label for="guestCount" class="block text-xs uppercase tracking-wider text-[#6d4c2d] font-semibold mb-1.5">No. of Guests *</label>
+                  <select
+                    id="guestCount"
+                    x-model="form.guests"
+                    required
+                    class="w-full rounded-xl border border-[#e5c178] bg-[#fffef9] px-3.5 py-3 text-sm outline-none focus:ring-2 focus:ring-[#ea580c]"
+                  >
+                    <option value="1">1 Guest</option>
+                    <option value="2">2 Guests</option>
+                    <option value="3">3 Guests</option>
+                    <option value="4">4 Guests</option>
+                    <option value="5+">5+ Guests</option>
+                  </select>
+                </div>
+              </div>
+
+              <fieldset>
+                <legend class="text-xs uppercase tracking-wider text-[#6d4c2d] font-semibold mb-2">Celebrations You Will Attend</legend>
+                <div class="space-y-1.5">
+                  <label class="flex gap-2.5 items-center text-sm py-1.5 px-3 rounded-lg bg-[#fffaf0] border border-[#f3dfba] cursor-pointer">
+                    <input type="checkbox" x-model="form.events" value="Wedding & Reception" class="accent-[#ea580c] w-4 h-4">
+                    <span>Wedding &amp; Reception · Tue, 2 Feb 2027</span>
+                  </label>
+                </div>
+              </fieldset>
+
+              <div>
+                <label for="blessing" class="block text-xs uppercase tracking-wider text-[#6d4c2d] font-semibold mb-1.5">Your Warm Wishes &amp; Aashirwad </label>
+                <textarea
+                  id="blessing"
+                  x-model.trim="form.wish"
+                  maxlength="400"
+                  rows="3"
+                  placeholder="Write a heartfelt blessing for Shruti & Ankit..."
+                  class="w-full rounded-xl border border-[#e5c178] bg-[#fffef9] px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-[#ea580c]"
+                ></textarea>
+              </div>
+
+              <button
+                :disabled="submitting"
+                class="w-full rounded-full bg-gradient-to-r from-[#c2410c] to-[#ea580c] hover:from-[#9a3412] hover:to-[#c2410c] text-white font-semibold py-3.5 text-xs tracking-[0.2em] uppercase shadow-md transition disabled:opacity-60"
+                type="submit"
+              >
+                <span x-show="!submitting">Send Your Blessings ♥</span>
+                <span x-show="submitting">Saving…</span>
+              </button>
+
+              <p x-show="feedback" x-text="feedback" role="status" class="text-xs text-center font-semibold text-[#15803d] pt-1"></p>
+            </form>
+          </div>
+        </div>
+
+        <!-- The Blessings Wall (Displays ONLY Name & Warm Wishes; Attendance & Guest Count Stay Private) -->
+        <div class="max-w-4xl mx-auto mt-16">
+          <div class="text-center">
+            <p class="text-[10px] tracking-[0.3em] uppercase text-[#a16207] font-semibold">Words From The Heart</p>
+            <h3 class="display text-3xl sm:text-4xl text-[#9a3412] mt-1">The Blessings Wall</h3>
+            <p class="text-xs text-[#785536] mt-1">
+              <span x-text="wishes.filter(w => w.wish && w.wish.trim()).length"></span> heartfelt wishes shared by family and friends
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-5 mt-8">
+            <template x-for="wish in wishes.filter(w => w.wish && w.wish.trim())" :key="wish.id">
+              <article class="bg-[#fffdf9] border border-[#ebd5a7] rounded-2xl p-6 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-[#ea580c] text-2xl leading-none">❝</span>
+                    <span x-show="wish.timeAgo" class="text-[10px] text-[#a87927]" x-text="wish.timeAgo"></span>
+                  </div>
+                  <p class="cormorant text-xl text-[#4a2c11] leading-relaxed mt-1" x-text="wish.wish"></p>
+                </div>
+                <div class="flex items-center justify-between gap-2 mt-4 pt-3 border-t border-[#f5e6c8]">
+                  <p class="text-xs font-semibold text-[#c2410c]">— <span x-text="wish.name"></span></p>
+                  <span class="text-[10px] text-[#9a6b26] bg-[#fff7ed] px-2.5 py-0.5 rounded-full border border-[#fed7aa]">Warm Blessing ♥</span>
+                </div>
+              </article>
+            </template>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===============================================================
+         ROYAL FOOTER
+         =============================================================== -->
+    <footer class="bg-[#3b060a] text-[#fef3c7] text-center px-4 py-14 relative overflow-hidden">
+      <div class="env-brocade-pattern"></div>
+      <div class="relative z-10 max-w-xl mx-auto">
+        <div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+          <img src="Ganesha logo.png" alt="Ganesha" class="w-11 h-11 object-contain brightness-150" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+          <svg class="w-11 h-11 hidden"><use href="#ganesha-logo-svg"/></svg>
+        </div>
+        <p class="hindi text-sm text-[#fbbf24]">|| श्री गणेशाय नमः ||</p>
+        <p class="display text-4xl sm:text-5xl gold-foil-text mt-3 font-bold pb-1">Shruti &amp; Ankit</p>
+        <p class="cormorant italic text-xl text-[#fde68a]/90 mt-2">A lifetime of love &amp; togetherness starts here.</p>
+        <p class="text-[10px] tracking-[0.28em] uppercase text-[#fca5a5] mt-5">02 February 2027 · Thane, Maharashtra</p>
+        <button
+          type="button"
+          @click="opened = false; window.scrollTo({top: 0, behavior: 'smooth'})"
+          class="mt-7 inline-flex items-center gap-1.5 text-[11px] tracking-widest uppercase text-[#fde68a] underline underline-offset-4 hover:text-white"
+        >
+          ↺ Replay Envelope Opening
+        </button>
+      </div>
+    </footer>
+  </main>
+
+  <!-- =================================================================
+       CLOUD BACKEND (PRIVATE RSVP ATTENDANCE + PUBLIC BLESSINGS WALL)
+       ================================================================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, collection, doc, setDoc, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // ============================================================================
+    // OPTIONAL FOR GITHUB PAGES: Paste your Google Apps Script Web App URL below!
+    // ============================================================================
+    const GOOGLE_SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyCgT8gZP1OkrsSLWQ4eM9uASd3eRmIin_G9rSLtBg55t2rf5c0opeF4IigMOAxrdMkdg/exec";
+    const APPS_SCRIPT_URL = GOOGLE_SHEETS_WEB_APP_URL;
+
+    window.__weddingCloud = {
+      mode: "init",
+      db: null,
+      auth: null,
+      user: null,
+      appId: typeof __app_id !== "undefined" ? __app_id : "shruti-ankit-wedding-2027",
+      sheetsUrl: APPS_SCRIPT_URL,
+
+      async connect(onWishesUpdate, onDiyaUpdate) {
+        if (this.sheetsUrl && this.sheetsUrl.startsWith("https://")) {
+          this.mode = "sheets";
+          await this.fetchFromGoogleSheets(onWishesUpdate, onDiyaUpdate);
+          setInterval(() => this.fetchFromGoogleSheets(onWishesUpdate, onDiyaUpdate), 15000);
+          return;
+        }
+
+        try {
+          if (typeof __firebase_config !== "undefined" && __firebase_config) {
+            const firebaseConfig = JSON.parse(__firebase_config);
+            const app = initializeApp(firebaseConfig);
+            this.auth = getAuth(app);
+            this.db = getFirestore(app);
+
+            if (typeof __initial_auth_token !== "undefined" && __initial_auth_token) {
+              const cred = await signInWithCustomToken(this.auth, __initial_auth_token);
+              this.user = cred.user;
+            } else {
+              const cred = await signInAnonymously(this.auth);
+              this.user = cred.user;
+            }
+
+            if (!this.user) return;
+            this.mode = "live";
+
+            // Listen to blessings for The Blessings Wall (only expose name, wish, and timestamp)
+            const wishesCol = collection(this.db, "artifacts", this.appId, "public", "data", "weddingBlessings");
+            onSnapshot(
+              wishesCol,
+              (snapshot) => {
+                const items = [];
+                snapshot.forEach((docSnap) => {
+                  const data = docSnap.data();
+                  if (data.wish && String(data.wish).trim() !== "") {
+                    items.push({
+                      id: docSnap.id,
+                      name: data.name || "Guest",
+                      wish: String(data.wish).trim(),
+                      createdAt: data.createdAt || 0,
+                      timeAgo: this.formatTime(data.createdAt)
+                    });
+                  }
+                });
+                items.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+                onWishesUpdate(items);
+              },
+              (err) => {
+                console.warn("Blessings listener error:", err);
+              }
+            );
+
+            // Listen to shared Diya counter document
+            const statsDoc = doc(this.db, "artifacts", this.appId, "public", "data", "weddingStats", "diyaCounter");
+            onSnapshot(
+              statsDoc,
+              (docSnap) => {
+                if (docSnap.exists() && typeof docSnap.data().count === "number") {
+                  onDiyaUpdate(docSnap.data().count);
+                }
+              },
+              (err) => {
+                console.warn("Diya counter listener error:", err);
+              }
+            );
+          }
+        } catch (err) {
+          console.warn("Cloud init fallback:", err);
+        }
+      },
+
+      async fetchFromGoogleSheets(onWishesUpdate, onDiyaUpdate) {
+        try {
+          const res = await fetch(this.sheetsUrl);
+          const data = await res.json();
+          if (Array.isArray(data.wishes)) {
+            const formatted = data.wishes
+              .filter((w) => w.wish && String(w.wish).trim() !== "")
+              .map((w, i) => ({
+                id: w.id || "sheet-" + i,
+                name: w.name || "Guest",
+                wish: String(w.wish).trim(),
+                createdAt: w.createdAt || Date.now(),
+                timeAgo: this.formatTime(w.createdAt)
+              }));
+            onWishesUpdate(formatted);
+          }
+          if (typeof data.diyaCount === "number") {
+            onDiyaUpdate(data.diyaCount);
+          }
+        } catch (e) {
+          console.warn("Google Sheets fetch error:", e);
+        }
+      },
+
+      async postWish(entry) {
+        if (this.mode === "sheets" && this.sheetsUrl) {
+          await fetch(this.sheetsUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({ action: "addWish", ...entry })
+          });
+          return true;
+        }
+        if (this.mode === "live" && this.db && this.user) {
+          const wishesCol = collection(this.db, "artifacts", this.appId, "public", "data", "weddingBlessings");
+          await addDoc(wishesCol, {
+            name: entry.name,
+            guests: entry.guests || "1",
+            wish: entry.wish || "",
+            events: entry.events,
+            createdAt: entry.createdAt,
+            uid: this.user.uid
+          });
+          return true;
+        }
+        return false;
+      },
+
+      async updateDiya(newCount) {
+        if (this.mode === "sheets" && this.sheetsUrl) {
+          await fetch(this.sheetsUrl, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify({ action: "lightDiya", count: newCount })
+          });
+          return true;
+        }
+        if (this.mode === "live" && this.db && this.user) {
+          const statsDoc = doc(this.db, "artifacts", this.appId, "public", "data", "weddingStats", "diyaCounter");
+          await setDoc(statsDoc, { count: newCount, updatedAt: Date.now() }, { merge: true });
+          return true;
+        }
+        return false;
+      },
+
+      formatTime(ts) {
+        if (!ts) return "Just now";
+        const diff = Math.max(0, Math.floor((Date.now() - Number(ts)) / 1000));
+        if (diff < 60) return "Just now";
+        if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+        if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+        return new Date(Number(ts)).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+      }
+    };
+
+    window.dispatchEvent(new CustomEvent("wedding-cloud-ready"));
+  </script>
+
+  <!-- =================================================================
+       APPLICATION LOGIC & PARTICLE PHYSICS ENGINE
+       ================================================================= -->
+  <script>
+    function weddingApp() {
+      return {
+        opened: false,
+        tearing: false,
+        submitting: false,
+        scrollPercent: 0,
+        envRotateX: 0,
+        envRotateY: 0,
+        activeMotif: null,
+        activePhoto: null,
+        copiedKey: '',
+        diyaLit: true,
+        diyaCount: 108,
+        userLitDiya: false,
+
+        countdown: [
+          { label: 'Days', value: 0 },
+          { label: 'Hours', value: 0 },
+          { label: 'Minutes', value: 0 },
+          { label: 'Seconds', value: 0 }
+        ],
+
+        gallery: [
+          {
+            src: 'Ganpati.jpg',
+            fallback: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=900&q=85',
+            caption: 'Ganpati Celebrations',
+            subtitle: 'Seeking Bappa’s blessings together',
+            tilt: '-2.5deg'
+          },
+          {
+            src: 'Peace.jpg',
+            fallback: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=900&q=85',
+            caption: 'Trips & Adventures',
+            subtitle: 'Every journey feels like home',
+            tilt: '2deg'
+          },
+          {
+            src: 'Wedding_venue.jpg',
+            fallback: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85',
+            caption: 'Forever Together',
+            subtitle: 'Counting down to 2 February 2027',
+            tilt: '-1.5deg'
+          }
+        ],
+
+        form: {
+          name: '',
+          guests: '1',
+          events: ['Wedding & Reception'],
+          wish: ''
+        },
+
+        wishes: [],
+        feedback: '',
+
+        defaultWishes: [
+          {
+            id: 'seed-1',
+            name: 'Tamhane & Singh Parivar',
+            wish: 'May Lord Ganesha bless Shruti and Ankit with a lifetime of love, laughter, and endless prosperity!',
+            timeAgo: 'Family Blessing'
+          },
+          {
+            id: 'seed-2',
+            name: 'Friends',
+            wish: 'So thrilled for both of you! Wishing you a joyous journey ahead filled with love and togetherness.',
+            timeAgo: 'Warm Wishes'
+          }
+        ],
+
+        init() {
+          this.tick();
+          setInterval(() => this.tick(), 1000);
+          this.wishes = [...this.defaultWishes];
+
+          const startCloud = () => {
+            if (!window.__weddingCloud) return;
+            window.__weddingCloud.connect(
+              (cloudWishes) => {
+                if (Array.isArray(cloudWishes) && cloudWishes.length > 0) {
+                  this.wishes = [...cloudWishes, ...this.defaultWishes];
+                }
+              },
+              (cloudDiyaCount) => {
+                if (typeof cloudDiyaCount === 'number' && cloudDiyaCount >= this.diyaCount) {
+                  this.diyaCount = cloudDiyaCount;
+                }
+              }
+            );
+          };
+
+          if (window.__weddingCloud) {
+            startCloud();
+          } else {
+            window.addEventListener('wedding-cloud-ready', startCloud, { once: true });
+          }
+
+          // Scroll listener for progress bar
+          window.addEventListener('scroll', () => {
+            const doc = document.documentElement;
+            const total = doc.scrollHeight - doc.clientHeight;
+            this.scrollPercent = total > 0 ? Math.min(100, Math.round((doc.scrollTop / total) * 100)) : 0;
+          }, { passive: true });
+
+          // Initialize Marigold & Gold Dust Canvas Engine
+          this.initCanvasParticles();
+        },
+
+        handleEnvelopeTilt(e) {
+          if (this.tearing) return;
+          const rect = e.currentTarget.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          this.envRotateY = (x * 14).toFixed(2);
+          this.envRotateX = (-y * 12).toFixed(2);
+        },
+
+        resetEnvelopeTilt() {
+          this.envRotateX = 0;
+          this.envRotateY = 0;
+        },
+
+        tick() {
+          const target = new Date('2027-02-02T17:48:00+05:30').getTime();
+          const diff = Math.max(0, target - Date.now());
+          this.countdown = [
+            { label: 'Days', value: Math.floor(diff / 86400000) },
+            { label: 'Hours', value: Math.floor((diff % 86400000) / 3600000) },
+            { label: 'Minutes', value: Math.floor((diff % 3600000) / 60000) },
+            { label: 'Seconds', value: Math.floor((diff % 60000) / 1000) }
+          ];
+        },
+
+        openInvitation() {
+          if (this.opened || this.tearing) return;
+          this.tearing = true;
+          this.resetEnvelopeTilt();
+          this.burstPetals(50);
+
+          setTimeout(() => {
+            this.opened = true;
+            this.tearing = false;
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+          }, 1550);
+        },
+
+        async lightDiya() {
+          this.diyaCount++;
+          this.userLitDiya = true;
+          this.burstPetals(24);
+          if (window.__weddingCloud) {
+            await window.__weddingCloud.updateDiya(this.diyaCount);
+          }
+        },
+
+        copyText(text, key) {
+          const el = document.createElement('textarea');
+          el.value = text;
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand('copy');
+          document.body.removeChild(el);
+          this.copiedKey = key;
+          setTimeout(() => {
+            if (this.copiedKey === key) this.copiedKey = '';
+          }, 2200);
+        },
+
+        downloadICS() {
+          const icsContent = [
+            'BEGIN:VCALENDAR',
+            'VERSION:2.0',
+            'PRODID:-//Shruti & Ankit Wedding//EN',
+            'BEGIN:VEVENT',
+            'DTSTART:20270202T121800Z',
+            'DTEND:20270202T173000Z',
+            'SUMMARY:Shruti & Ankit — Wedding & Reception',
+            'DESCRIPTION:Wedding of Shruti Tamhane & Ankit Singh. Shubh Mahurat at 5:48 PM IST.',
+            'LOCATION:Madhuram Banquet Hall, Kasarvadavali, Thane West, Thane, Maharashtra 400615',
+            'END:VEVENT',
+            'END:VCALENDAR'
+          ].join('\r\n');
+
+          const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(blob);
+          link.setAttribute('download', 'Shruti_Ankit_Wedding_2Feb2027.ics');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        },
+
+        async submitWish() {
+          if (!this.form.name || this.submitting) return;
+          this.submitting = true;
+          const cleanWish = (this.form.wish || '').trim();
+          const entry = {
+            id: 'local-' + Date.now(),
+            name: this.form.name,
+            guests: this.form.guests || '1',
+            wish: cleanWish,
+            events: [...this.form.events],
+            createdAt: Date.now(),
+            timeAgo: 'Just now'
+          };
+
+          // Only add to the public Blessings Wall if the guest wrote a warm wish
+          if (cleanWish && (!window.__weddingCloud || window.__weddingCloud.mode !== 'live')) {
+            this.wishes.unshift({
+              id: entry.id,
+              name: entry.name,
+              wish: entry.wish,
+              createdAt: entry.createdAt,
+              timeAgo: 'Just now'
+            });
+          }
+
+          this.burstPetals(35);
+
+          try {
+            if (window.__weddingCloud) {
+              await window.__weddingCloud.postWish(entry);
+            }
+            this.feedback = cleanWish
+              ? '✨ Thank you! Your RSVP is saved privately and your blessing is now on the wall.'
+              : '✨ Thank you! Your RSVP has been privately shared with Shruti & Ankit.';
+          } catch (e) {
+            this.feedback = '✨ Thank you! Your response has been recorded.';
+          } finally {
+            this.submitting = false;
+            this.form = { name: '', guests: '1', events: ['Wedding & Reception'], wish: '' };
+          }
+        },
+
+        // HTML5 Canvas Marigold Petals & Gold Dust Physics
+        initCanvasParticles() {
+          const canvas = document.getElementById('celebrationCanvas');
+          if (!canvas) return;
+          const ctx = canvas.getContext('2d');
+          let w = (canvas.width = window.innerWidth);
+          let h = (canvas.height = window.innerHeight);
+
+          window.addEventListener('resize', () => {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+          });
+
+          const palette = ['#f97316', '#f59e0b', '#fbbf24', '#ea580c', '#dc2626', '#fde047'];
+          this._particles = Array.from({ length: 24 }, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: 4 + Math.random() * 5,
+            vx: -0.4 + Math.random() * 0.8,
+            vy: 0.6 + Math.random() * 1.1,
+            angle: Math.random() * Math.PI * 2,
+            spin: -0.02 + Math.random() * 0.04,
+            color: palette[Math.floor(Math.random() * palette.length)],
+            alpha: 0.45 + Math.random() * 0.4,
+            burst: false
+          }));
+
+          const render = () => {
+            ctx.clearRect(0, 0, w, h);
+            for (let i = this._particles.length - 1; i >= 0; i--) {
+              const p = this._particles[i];
+              p.x += p.vx;
+              p.y += p.vy;
+              p.angle += p.spin;
+
+              if (p.burst) {
+                p.vy += 0.06; // gravity
+                p.alpha -= 0.006;
+                if (p.alpha <= 0 || p.y > h + 30) {
+                  this._particles.splice(i, 1);
+                  continue;
+                }
+              } else {
+                if (p.y > h + 20) {
+                  p.y = -15;
+                  p.x = Math.random() * w;
+                }
+                if (p.x > w + 20) p.x = -15;
+                if (p.x < -20) p.x = w + 15;
+              }
+
+              ctx.save();
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.angle);
+              ctx.globalAlpha = Math.max(0, p.alpha);
+              ctx.fillStyle = p.color;
+              ctx.beginPath();
+              ctx.ellipse(0, 0, p.r, p.r * 0.6, 0, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+            }
+            requestAnimationFrame(render);
+          };
+          requestAnimationFrame(render);
+        },
+
+        burstPetals(count = 32) {
+          if (!this._particles) return;
+          const w = window.innerWidth;
+          const h = window.innerHeight;
+          const palette = ['#f97316', '#f59e0b', '#fbbf24', '#ea580c', '#991b1b', '#fef08a'];
+          for (let i = 0; i < count; i++) {
+            this._particles.push({
+              x: w * 0.5 + (-80 + Math.random() * 160),
+              y: h * 0.45 + (-40 + Math.random() * 80),
+              r: 5 + Math.random() * 6,
+              vx: -5 + Math.random() * 10,
+              vy: -6 + Math.random() * 5,
+              angle: Math.random() * Math.PI * 2,
+              spin: -0.08 + Math.random() * 0.16,
+              color: palette[Math.floor(Math.random() * palette.length)],
+              alpha: 0.95,
+              burst: true
+            });
+          }
+        }
+      };
+    }
+  </script>
+</body>
+</html>
